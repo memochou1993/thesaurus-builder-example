@@ -13,26 +13,21 @@
     <div id="app">
         <h1 id="title"></h1>
         <hr>
-        <form>
-            <label>
-                <input type="text" placeholder="Search" id="input" autocomplete="off" autofocus>
-            </label>
-        </form>
         <ul id="root"></ul>
     </div>
     <template data-subject-template>
         <li class="subject">
-            <div class="preferred-term"></div>
+            <div class="preferred-term pointer"></div>
+            <div class="caption caption-notes">Notes:</div>
             <div class="notes">
-                <div class="caption">Notes:</div>
                 <!-- insert "data-note-template" -->
             </div>
+            <div class="caption caption-terms">Terms:</div>
             <div class="terms">
-                <div class="caption">Terms:</div>
                 <!-- insert "data-term-template" -->
             </div>
-            <ul class="narrower-terms hidden">
-                <div class="caption">Narrower Terms:</div>
+            <div class="caption caption-narrower-terms">Narrower Terms:</div>
+            <ul class="narrower-terms">
                 <!-- insert "data-subject-template" -->
             </ul>
         </li>
