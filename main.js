@@ -20,12 +20,15 @@ const noteTemplate = document.querySelector('[data-note-template]');
  */
 const render = (target, prop) => {
   const [subject] = subjectTemplate.content.cloneNode(true).children;
-  const [preferredTerm, notes, terms, children] = subject.children;
+  const [preferredTerm, notes, terms, narrowerTerms] = subject.children;
+  if (!prop?.children?.length) {
+    narrowerTerms.textContent = '';
+  }
   prop.subject.terms.forEach((item) => {
     if (item.preferred) {
       preferredTerm.textContent = item.text;
       preferredTerm.classList.add(prop?.children?.length ? 'preferred-term-expandable' : 'preferred-term-expanded');
-   }
+    }
     const [term] = termTemplate.content.cloneNode(true).children;
     const [text] = term.children;
     text.textContent = item.preferred ? `${item.text} (preferred)` : item.text;
@@ -38,7 +41,7 @@ const render = (target, prop) => {
     notes.append(note);
   });
   target.appendChild(subject);
-  setTimeout(() => prop?.children?.forEach((item) => render(children, item)), 0);
+  setTimeout(() => prop?.children?.forEach((item) => render(narrowerTerms, item)), 0);
 };
 
 const search = (prop, input) => {
@@ -80,7 +83,7 @@ let data;
 
 root.addEventListener('click', (e) => {
   if (e.target.classList.contains('preferred-term-expandable')) {
-    e.target.parentElement.querySelector('.children').classList.toggle('hidden');
+    e.target.parentElement.querySelector('.narrower-terms').classList.toggle('hidden');
     e.target.classList.toggle('preferred-term-expanded');
   }
 });

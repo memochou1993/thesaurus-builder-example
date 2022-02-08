@@ -20,7 +20,9 @@ body {
   margin: 12px 24px;
 }
 form {
-  display: none;
+  display: flex;
+  justify-content: end;
+  margin: 20px 12px;
 }
 ul {
   list-style-type: none;
@@ -30,27 +32,33 @@ ul {
 li {
   border: 1px solid #AEAEAE;
   border-radius: 4px;
-  margin: 12px 12px 4px 24px;
-  padding: 12px; 
+  margin: 8px 12px 8px 24px;
+  padding: 8px;
 }
 .caption {
   font-size: 14px;
-  margin: 4px 0;
-}
-.children {
-  display: block;
+  margin: 4px 0 4px 24px;
 }
 .preferred-term {
   font-weight: 600;
   font-size: 20px;
 }
-.terms,
-.notes {
-  margin-left: 24px;
+.preferred-term::before {
+  color: #000000;
+  content: "\25B6";
+  display: inline-block;
+  margin-right: calc(8px * .75);
+  transform: scale(.75);
+}
+.preferred-term-expanded::before {
+  transform: scale(.75) rotate(90deg);
+}
+.preferred-term-expandable {
+  cursor: pointer;
 }
 .term,
 .note {
-  margin: 4px 0 4px 32px;
+  margin: 4px 0 4px 56px;
   text-indent: -20px;
 }
 .term-text::before,
@@ -89,4 +97,20 @@ li {
   100% {
     -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
   }
+}
+/* override */
+hr {
+  margin-bottom: 30px;
+}
+form {
+  display: none;
+}
+.preferred-term::before {
+  display: none;
+}
+.preferred-term-expandable {
+  cursor: default;
+}
+.narrower-terms {
+  display: block;
 }
