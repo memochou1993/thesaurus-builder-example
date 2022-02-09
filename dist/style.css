@@ -30,24 +30,19 @@ ul {
   padding: 0;
 }
 #root > li {
-  margin: 30px 20px 30px 32px;
+  margin: 24px;
 }
 li {
-  border: 1px solid #AEAEAE;
-  border-radius: 4px;
-  margin: 8px 12px 16px 24px;
-  padding: 8px;
-}
-li:last-child {
-  margin: 8px 12px 8px 24px;
+  margin: 8px 0 8px 32px;
 }
 .caption {
   font-size: 14px;
-  margin: 4px 0 4px 24px;
+  margin: 8px 0 8px 24px;
 }
 .preferred-term {
   font-weight: 600;
   font-size: 20px;
+  text-decoration: underline;
   user-select: none;
 }
 .preferred-term::before {
